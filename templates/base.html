@@ -25,6 +25,8 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url "article:post_article" %}">Post</a>  
               </li>
+
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Categories
@@ -38,6 +40,33 @@
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="{% url "article:categorised_article" 0 %}">All</a></li>  
                 </ul>
+  
+
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <form class="nav-link" action="{% url "users:logout" %}" method="POST">
+                    {% csrf_token %}
+                    <button class="border-0" type="submit">Logout</button>
+                  </form> 
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <form class="nav-link" action="{% url "users:login" %}" method="POST">
+                    {% csrf_token %}
+                    <button class="border-0" type="submit">Login</button>
+                  </form> 
+                </li>
+
+
+                <li class="nav-item">
+                  <a class="nav-link text-decoration-none" href="{% url "users:register" %}">Ragister</a>  
+                </li>
+
+                {% endif %}
+                
+
+                
+
               </li> 
             </ul>
             <form class="d-flex" role="search">
