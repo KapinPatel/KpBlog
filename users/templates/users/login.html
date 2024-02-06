@@ -2,29 +2,36 @@
 
 {% block content %}
 
-<div class="container">
-    <form action="" method='POST'>
-        {% csrf_token %}
-        <div class="username">
-        <div class="form-label mx-2 fw-bold">
-            {{form.username.label}}
+<div style="height: 400px;" class="container d-flex justify-content-center p-5"> 
+    <div class="login-form"> 
+        <h2 class='my-3 fw-bold text-success'>Login!</h2>
+        <form action="" method = "POST">
+            {% csrf_token %}
+            <div class= 'username'>
+                <div class="form-label mx-2 fw-bold text-dark">
+                    {{form.username.label}}
+                </div>
+                <div class="form-control border-0">
+                    {{form.username}} 
+                </div> 
+            </div> 
+            <div class= 'password'>
+                <div class="form-label mx-2 fw-bold text-dark">
+                    {{form.password.label}}
+                </div>
+                <div class="form-control border-0">
+                    {{form.password}} 
+                </div> 
+            </div>
+            <button class="btn btn-success m-2" type="submit">Login</button> 
+        </form>
+
+        <div class="d-flex">
+            <h6 class='mt-2 fw-semibold mx-2'>Dont have an account?</h6>
+            <a class='mx-3 fs-5' href="{% url "users:register" %}">Register</a> 
         </div>
-        <div class="form-control border-8">
-            {{form.username}}
-        </div>
-        <!-- <button class="btn btn-success" type="submit">login</button> -->
     </div>
-    <div class="passoerd">
-        <div class="form-label mx-2 fw-bold">
-            {{form.password.label}}
-        </div>
-        <div class="form-control border-8">
-            {{form.password}}
-        </div>
-        <h6> Don't have account ? <a href="{% url "users:register" %}">Ragister</a></h6>
-        <button class="btn btn-success" type="submit">login</button>
-    </div>
-    </form>
+    
 </div>
 
 {% endblock content %}
